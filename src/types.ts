@@ -5,7 +5,6 @@ export type Product = {
   description: string;
   image: string;
   volume?: string;
-  unit?: string;
 };
 
 export type CartItem = {
