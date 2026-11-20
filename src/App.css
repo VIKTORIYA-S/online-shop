@@ -2,8 +2,9 @@
   padding: 24px 16px;
 }
 
-.page h1 {
-  line-height: 1.1;
+.page > p {
+  max-width: 480px;
+  margin: 0 auto 24px;
 }
 
 .team {
