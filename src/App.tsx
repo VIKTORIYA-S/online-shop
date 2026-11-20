@@ -1,14 +1,19 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
 
 function App() {
-  const [isShopOpen, setIsShopOpen] = useState(false)
+  const [isShopOpen, setIsShopOpen] = useState(false);
 
   return (
     <main className="page">
       {isShopOpen ? (
         <>
           <h1>Магазин</h1>
+          <p>
+            Онлайн магазин. Учебный проект, выполненный в команде студентами RS
+            School. Вы можете выбрать товары в каталоге и посмотреть итоговую
+            сумму в корзине.
+          </p>
           <button
             type="button"
             className="page-button"
@@ -31,7 +36,10 @@ function App() {
               <strong>
                 <a href="https://github.com/alexander-alxck">alexander-alxck</a>
               </strong>
-              <p>Подготовил данные и изображения товаров и сделал стартовый экран.</p>
+              <p>
+                Подготовил данные и изображения товаров и сделал стартовый
+                экран.
+              </p>
             </li>
           </ul>
           <button
@@ -44,7 +52,7 @@ function App() {
         </>
       )}
     </main>
-  )
+  );
 }
 
-export default App
+export default App;
