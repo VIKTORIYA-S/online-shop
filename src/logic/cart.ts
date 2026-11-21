@@ -16,3 +16,7 @@ export function removeFromCart(cart: CartItem[], productId: number): CartItem[] 
   return cart.filter((item) => item.product.id !== productId);
 }
 
+
+export function calculateTotal(cart: CartItem[]): number { 
+  return cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
+}
