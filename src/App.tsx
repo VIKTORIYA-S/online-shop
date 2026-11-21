@@ -1,7 +1,59 @@
+import { useState } from "react";
 import "./App.css";
 
 function App() {
-  return <div></div>;
+  const [isShopOpen, setIsShopOpen] = useState(false);
+
+  return (
+    <main className="page">
+      {isShopOpen ? (
+        <>
+          <h2>Магазин</h2>
+          <button
+            type="button"
+            className="page-button"
+            onClick={() => setIsShopOpen(false)}
+          >
+            О команде
+          </button>
+        </>
+      ) : (
+        <>
+          <h2>О приложении</h2>
+          <p>
+            Интернет-магазин товаров для дома и гигиены — учебный проект
+            студентов RS School. В приложении можно будет выбрать товары из
+            каталога, добавить их в корзину и увидеть итоговую стоимость заказа.
+          </p>
+          <h2>О команде</h2>
+          <ul className="team">
+            <li>
+              <strong>
+                <a href="https://github.com/VIKTORIYA-S">VIKTORIYA-S</a>
+              </strong>
+              <p>Настроила Vitest и описала типы товаров и корзины.</p>
+            </li>
+            <li>
+              <strong>
+                <a href="https://github.com/alexander-alxck">alexander-alxck</a>
+              </strong>
+              <p>
+                Подготовил данные и изображения товаров и сделал стартовый
+                экран.
+              </p>
+            </li>
+          </ul>
+          <button
+            type="button"
+            className="page-button"
+            onClick={() => setIsShopOpen(true)}
+          >
+            Перейти в магазин
+          </button>
+        </>
+      )}
+    </main>
+  );
 }
 
 export default App;
