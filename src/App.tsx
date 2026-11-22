@@ -29,14 +29,12 @@ function App() {
           >
             О команде
           </button>
-          <ProductList
-            productList={products}
-            onAddToCart={handleAddToCart} />
           <Cart
             cart={cart}
             onRemove={handleRemoveFromCart}
             onGoShopping={() => {}}
           />
+          <ProductList productList={products} onAddToCart={handleAddToCart} />
         </>
       ) : (
         <>
