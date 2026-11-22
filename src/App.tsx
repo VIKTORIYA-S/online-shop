@@ -2,9 +2,20 @@ import { useState } from "react";
 import "./App.css";
 import ProductList from "./components/ProductList";
 import { products } from "./data/products";
+import type { CartItem, Product } from "./types";
+import { addToCart, removeFromCart } from "./logic/cart";
+import Cart from "./components/Cart";
 
 function App() {
   const [isShopOpen, setIsShopOpen] = useState(false);
+  const [cart, setCart] = useState<CartItem[]>([]);
+
+  function handleAddToCart(product: Product) {
+    setCart(addToCart(cart, product));
+  }
+  function handleRemoveFromCart(productId: number) {
+    setCart(removeFromCart(cart, productId));
+  }
 
   return (
     <main className="page">
@@ -18,7 +29,14 @@ function App() {
           >
             О команде
           </button>
-          <ProductList productList={products} />
+          <ProductList
+            productList={products}
+            onAddToCart={handleAddToCart} />
+          <Cart
+            cart={cart}
+            onRemove={handleRemoveFromCart}
+            onGoShopping={() => {}}
+          />
         </>
       ) : (
         <>
