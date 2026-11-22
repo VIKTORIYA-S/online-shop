@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "./App.css";
+import ProductList from "./components/ProductList";
+import { products } from "./data/products";
 
 function App() {
   const [isShopOpen, setIsShopOpen] = useState(false);
@@ -16,6 +18,7 @@ function App() {
           >
             О команде
           </button>
+          <ProductList productList={products} />
         </>
       ) : (
         <>
