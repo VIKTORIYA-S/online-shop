@@ -1,17 +1,16 @@
 import type { Product } from "../types";
-import ProductCart from "./ProductCart";
+
+import ProductCard from "./ProductCard";
 
 function ProductList({ productList }: { productList: Product[] }) {
+  const onAddToCart = (product: Product) => {
+    console.log(product.name);
+  };
+
   return (
     <div className="product-list">
       {productList.map((item) => (
-        <ProductCart
-          key={item.id}
-          product={item}
-          addToCart={() => {
-            console.log(`add to cart ${item.id}`);
-          }}
-        />
+        <ProductCard key={item.id} product={item} onAddToCart={onAddToCart} />
       ))}
     </div>
   );
