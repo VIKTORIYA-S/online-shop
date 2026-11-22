@@ -11,3 +11,8 @@ export function addToCart(cart: CartItem[], product: Product): CartItem[] {
   return [...cart, { product, quantity: 1 }];
 }
 
+
+export function removeFromCart(cart: CartItem[], productId: number): CartItem[] {
+  return cart.filter((item) => item.product.id !== productId);
+}
+
