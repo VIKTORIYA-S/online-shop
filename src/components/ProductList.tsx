@@ -1,12 +1,13 @@
 import type { Product } from "../types";
-
 import ProductCard from "./ProductCard";
 
-function ProductList({ productList }: { productList: Product[] }) {
-  const onAddToCart = (product: Product) => {
-    console.log(product.name);
-  };
-
+function ProductList({
+  productList,
+  onAddToCart,
+}: {
+  productList: Product[];
+  onAddToCart: (product: Product) => void;
+}) {
   return (
     <div className="product-list">
       {productList.map((item) => (
@@ -15,5 +16,5 @@ function ProductList({ productList }: { productList: Product[] }) {
     </div>
   );
 }
-
 export default ProductList;
+

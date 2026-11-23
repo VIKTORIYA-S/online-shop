@@ -29,9 +29,9 @@ function Cart({
       <ul>
         {cart.map((item) => (
           <li key={item.product.id}>
-            <span>{item.product.name}</span>
-            <span>{item.product.price}</span>
-            <span>{item.quantity}</span>
+            <span>{item.product.name} </span>
+            <span>Цена: {item.product.price} USD </span>
+            <span>Количество: {item.quantity} </span>
             <button
               type="button"
               className="cart-button"
