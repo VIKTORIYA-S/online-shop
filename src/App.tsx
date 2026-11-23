@@ -5,10 +5,12 @@ import { products } from "./data/products";
 import type { CartItem, Product } from "./types";
 import { addToCart, removeFromCart } from "./logic/cart";
 import Cart from "./components/Cart";
+import SearchProduct from "./components/SearchProduct";
 
 function App() {
   const [isShopOpen, setIsShopOpen] = useState(false);
   const [cart, setCart] = useState<CartItem[]>([]);
+  const [currentProducts, setCurrentProducts] = useState<Product[]>(products);
 
   function handleAddToCart(product: Product) {
     setCart(addToCart(cart, product));
@@ -34,7 +36,11 @@ function App() {
             onRemove={handleRemoveFromCart}
             onGoShopping={() => {}}
           />
-          <ProductList productList={products} onAddToCart={handleAddToCart} />
+          <SearchProduct setCurrentProducts={setCurrentProducts} />
+          <ProductList
+            productList={currentProducts}
+            onAddToCart={handleAddToCart}
+          />
         </>
       ) : (
         <>
