@@ -1,75 +1,35 @@
-# React + TypeScript + Vite
+# online-shop (Интернет-магазин)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ Учебный проект RS School
 
-Currently, two official plugins are available:
+ Сделан на React + TypeScript + Vite + Vitest
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Можно посмотреть каталог,
+- внести товар в корзину,
+- добавить товар, удалить,
+- получить итоговую стоимость выбранных товаров.
 
-## React Compiler
+## Ссылки
+- [Деплой:](https://online-shop-rouge-eight.vercel.app) https://online-shop-rouge-eight.vercel.app
+- [Доска:](https://github.com/users/VIKTORIYA-S/projects/3) https://github.com/users/VIKTORIYA-S/projects/3
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Как запустить
+- ```npm install```
+- ```npm run dev```
+- ```npm test```
 
-## Expanding the ESLint configuration
+## Команда (описание пока предварительное, обновим в конце)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- [alexander-alxck](https://github.com/alexander-alxck)
+ Данные и изображения товаров, компоненты каталога, стартовая страница «О команде». Поиск и фильтрация товаров (в работе).
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- [VIKTORIYA-S](https://github.com/VIKTORIYA-S)
+ Типы данных, логика корзины с unit-тестами (Vitest), компонент корзины и подключение её к каталогу, деплой, README.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Правила работы
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- ветки feature/... и fix/... с номером задачи,
+- коммиты feat:, fix:, test:, docs:,
+- каждый PR ревьюит напарник,
+- мерж делает ревьюер после Approve.
 
-```
-
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
