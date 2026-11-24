@@ -1,6 +1,7 @@
 import { useEffect, useState, type Dispatch } from "react";
 import type { Product } from "../types";
 import { products } from "../data/products";
+import { filterProducts } from "../logic/search";
 
 function SearchProduct({
   setSearchedProduct,
@@ -10,12 +11,13 @@ function SearchProduct({
   const [query, setQuery] = useState("");
 
   useEffect(() => {
-    // const productList = searchProduct(query);
-    setSearchedProduct(products);
+    const productList = filterProducts(products, query);
+    setSearchedProduct(productList);
   }, [query, setQuery, setSearchedProduct]);
 
   return (
     <input
+      className="search-input"
       type="text"
       value={query}
       onChange={(e) => setQuery(e.target.value)}

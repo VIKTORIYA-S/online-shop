@@ -37,10 +37,14 @@ function App() {
             onGoShopping={() => {}}
           />
           <SearchProduct setSearchedProduct={setSearchedProduct} />
-          <ProductList
-            productList={searchedProduct}
-            onAddToCart={handleAddToCart}
-          />
+          {searchedProduct.length === 0 ? (
+            <div className="not-finded">Ничего не найдено</div>
+          ) : (
+            <ProductList
+              productList={searchedProduct}
+              onAddToCart={handleAddToCart}
+            />
+          )}
         </>
       ) : (
         <>
