@@ -3,7 +3,7 @@ import "./App.css";
 import ProductList from "./components/ProductList";
 import { products } from "./data/products";
 import type { CartItem, Product } from "./types";
-import { addToCart, removeFromCart } from "./logic/cart";
+import { addToCart, removeFromCart, decreaseQuantity } from "./logic/cart";
 import Cart from "./components/Cart";
 
 function App() {
@@ -15,6 +15,10 @@ function App() {
   }
   function handleRemoveFromCart(productId: number) {
     setCart(removeFromCart(cart, productId));
+  }
+
+  function handleDecrease(productId: number) {
+    setCart(decreaseQuantity(cart, productId));
   }
 
   return (
@@ -32,6 +36,8 @@ function App() {
           <Cart
             cart={cart}
             onRemove={handleRemoveFromCart}
+            onIncrease={handleAddToCart}
+            onDecrease={handleDecrease}
             onGoShopping={() => {}}
           />
           <ProductList productList={products} onAddToCart={handleAddToCart} />
