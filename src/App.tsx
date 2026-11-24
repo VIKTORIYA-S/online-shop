@@ -5,10 +5,12 @@ import { products } from "./data/products";
 import type { CartItem, Product } from "./types";
 import { addToCart, removeFromCart, decreaseQuantity } from "./logic/cart";
 import Cart from "./components/Cart";
+import SearchProduct from "./components/SearchProduct";
 
 function App() {
   const [isShopOpen, setIsShopOpen] = useState(false);
   const [cart, setCart] = useState<CartItem[]>([]);
+  const [searchedProduct, setSearchedProduct] = useState<Product[]>(products);
 
   function handleAddToCart(product: Product) {
     setCart(addToCart(cart, product));
@@ -40,7 +42,15 @@ function App() {
             onDecrease={handleDecrease}
             onGoShopping={() => {}}
           />
-          <ProductList productList={products} onAddToCart={handleAddToCart} />
+          <SearchProduct setSearchedProduct={setSearchedProduct} />
+          {searchedProduct.length === 0 ? (
+            <div className="not-finded">Ничего не найдено</div>
+          ) : (
+            <ProductList
+              productList={searchedProduct}
+              onAddToCart={handleAddToCart}
+            />
+          )}
         </>
       ) : (
         <>

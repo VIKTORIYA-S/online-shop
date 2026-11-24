@@ -55,3 +55,11 @@
     padding: 3px;
   }
 }
+
+.not-finded {
+  margin-top: 20px;
+}
+
+.search-input {
+  margin: 10px 0;
+}
