@@ -5,7 +5,7 @@ import type { Product } from "../types";
 export function filterProducts(products: Product[], query: string = "") {
   const str = stringNormalize(query);
 
-  return products.filter((searchStr) =>
-    stringNormalize(searchStr.name).includes(str),
+  return products.filter((product) =>
+    stringNormalize(product.name).includes(str),
   );
 }
