@@ -1,15 +1,19 @@
-import type { CartItem } from "../types";
+import type { CartItem, Product } from "../types";
 import { calculateTotal } from "../logic/cart";
 
 
 function Cart({
   cart,
-    onGoShopping,
-    onRemove,
+  onGoShopping,
+  onRemove,
+  onIncrease,
+  onDecrease,
 }: {
   cart: CartItem[];
   onGoShopping: () => void;
   onRemove: (productId: number) => void;
+  onIncrease: (product: Product) => void;
+  onDecrease: (productId: number) => void;
 }) {
   if (cart.length === 0) {
     return (
@@ -32,6 +36,23 @@ function Cart({
             <span>{item.product.name} </span>
             <span>Цена: {item.product.price} USD </span>
             <span>Количество: {item.quantity} </span>
+
+            <button
+              type="button"
+              className="cart-button"
+              onClick={() => onDecrease(item.product.id)}
+            >
+              -
+            </button>
+
+            <button
+              type="button"
+              className="cart-button"
+              onClick={() => onIncrease(item.product)}
+            >
+              +
+            </button>
+
             <button
               type="button"
               className="cart-button"
