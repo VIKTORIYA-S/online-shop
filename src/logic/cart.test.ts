@@ -1,6 +1,11 @@
 import { test, expect, describe } from "vitest";
 import type { Product } from "../types";
-import { addToCart, removeFromCart, calculateTotal } from "./cart";
+import {
+  addToCart,
+  removeFromCart,
+  calculateTotal,
+  decreaseQuantity,
+} from "./cart";
 
 const gel: Product = {
   id: 1,
@@ -103,3 +108,46 @@ describe("calculateTotal", () => {
     expect(result).toBe(1300);
   });
 });
+
+describe("decreaseQuantity", () => {
+  test("уменьшает количество товара на 1", () => {
+    const cart = [{ product: gel, quantity: 2 }];
+    const result = decreaseQuantity(cart, gel.id);
+    expect(result).toEqual([{ product: gel, quantity: 1 }]);
+  });
+
+ test("удаляет товар, если количество становится 0", () => {
+   const cart = [{ product: gel, quantity: 1 }];
+   const result = decreaseQuantity(cart, gel.id);
+   expect(result).toEqual([]);
+ });
+
+  test("не меняет исходную корзину", () => {
+    const cart = [{ product: gel, quantity: 1 }];
+    decreaseQuantity(cart, gel.id);
+    expect(cart).toEqual([{ product: gel, quantity: 1 }]);
+  });
+
+  test("возвращает корзину без изменений, если такого товара нет", () => {
+    const cart = [{ product: gel, quantity: 1 }];
+    const result = decreaseQuantity(cart, shampoo.id);
+    expect(result).toEqual([{ product: gel, quantity: 1 }]);
+  });
+
+  test("не изменяет количество других товаров в корзине", () => {
+    const cart = [
+      { product: gel, quantity: 2 },
+      { product: shampoo, quantity: 1 },
+    ];
+    const result = decreaseQuantity(cart, gel.id);
+    expect(result).toEqual([
+      { product: gel, quantity: 1 },
+      { product: shampoo, quantity: 1 },
+    ]);
+  });
+
+  test("пустая корзина остается пустой", () => {
+    const result = decreaseQuantity([], gel.id);
+    expect(result).toEqual([]);
+  });
+ })
