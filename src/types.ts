@@ -1,3 +1,5 @@
+export type Category = "household" | "hygiene";
+
 export type Product = {
   id: number;
   name: string;
@@ -5,7 +7,7 @@ export type Product = {
   description: string;
   image: string;
   volume?: string;
-  category: string;
+  category: Category;
 };
 
 export type CartItem = {
