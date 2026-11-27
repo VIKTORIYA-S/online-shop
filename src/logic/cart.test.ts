@@ -14,6 +14,7 @@ const gel: Product = {
   description: "Жидкое средство для стирки повседневной одежды.",
   image: "/products/household_gel.png",
   volume: "1 л",
+  category: "household",
 };
 
 const shampoo: Product = {
@@ -23,6 +24,7 @@ const shampoo: Product = {
   description: "Шампунь для ежедневного ухода за волосами.",
   image: "/products/hygiene_shampoo.png",
   volume: "400 мл",
+  category: "hygiene",
 };
 
 describe("addToCart", () => {

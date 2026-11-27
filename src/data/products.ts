@@ -10,6 +10,7 @@ export const products: Product[] = [
     description: "Жидкое средство для стирки повседневной одежды.",
     image: `${imageBaseUrl}/household_gel.png`,
     volume: "1 л",
+    category: "household",
   },
   {
     id: 2,
@@ -18,6 +19,7 @@ export const products: Product[] = [
     description: "Шампунь для ежедневного ухода за волосами.",
     image: `${imageBaseUrl}/hygiene_shampoo.png`,
     volume: "400 мл",
+    category: "hygiene",
   },
   {
     id: 3,
@@ -26,6 +28,7 @@ export const products: Product[] = [
     description: "Дезодорант-спрей для ежедневного использования.",
     image: `${imageBaseUrl}/deodorant.png`,
     volume: "150 мл",
+    category: "hygiene",
   },
   {
     id: 4,
@@ -33,6 +36,8 @@ export const products: Product[] = [
     price: 250,
     description: "Порошок для стирки одежды и белья.",
     image: `${imageBaseUrl}/detergent.png`,
+    volume: "1 кг",
+    category: "household",
   },
   {
     id: 5,
@@ -41,6 +46,7 @@ export const products: Product[] = [
     description: "Набор губок для мытья посуды.",
     image: `${imageBaseUrl}/household_sponges.png`,
     volume: "5 шт.",
+    category: "household",
   },
   {
     id: 6,
@@ -49,6 +55,7 @@ export const products: Product[] = [
     description: "Паста для ежедневной чистки зубов.",
     image: `${imageBaseUrl}/hygiene_toothpaste.png`,
     volume: "75 мл",
+    category: "hygiene",
   },
   {
     id: 7,
@@ -57,6 +64,7 @@ export const products: Product[] = [
     description: "Бумажные салфетки для сервировки стола.",
     image: `${imageBaseUrl}/napkins.png`,
     volume: "100 шт.",
+    category: "household",
   },
   {
     id: 8,
@@ -65,5 +73,6 @@ export const products: Product[] = [
     description: "Твёрдое мыло для мытья рук.",
     image: `${imageBaseUrl}/soap.png`,
     volume: "100 г",
+    category: "hygiene",
   },
 ];
