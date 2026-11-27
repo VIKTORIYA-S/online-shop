@@ -1,4 +1,4 @@
-export type Category = "household" | "hygiene";
+export type Category = "household" | "hygiene" | "all";
 
 export type Product = {
   id: number;
