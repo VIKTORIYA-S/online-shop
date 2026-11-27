@@ -1,4 +1,5 @@
-export type Category = "household" | "hygiene" | "all";
+export type Category = "household" | "hygiene";
+export type CategoryFilter = Category | "all";
 
 export type Product = {
   id: number;

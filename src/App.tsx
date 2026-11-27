@@ -1,16 +1,25 @@
 import { useState } from "react";
-import "./App.css";
-import ProductList from "./components/ProductList";
-import { products } from "./data/products";
-import type { CartItem, Product } from "./types";
-import { addToCart, removeFromCart, decreaseQuantity } from "./logic/cart";
+
 import Cart from "./components/Cart";
+import FilterCategory from "./components/FilterCategory";
+import ProductList from "./components/ProductList";
 import SearchProduct from "./components/SearchProduct";
+
+import { products } from "./data/products";
+
+import { addToCart, decreaseQuantity, removeFromCart } from "./logic/cart";
+import { filterByCategory } from "./logic/filter";
+import { filterProducts } from "./logic/search";
+
+import { type CartItem, type CategoryFilter, type Product } from "./types";
+
+import "./App.css";
 
 function App() {
   const [isShopOpen, setIsShopOpen] = useState(false);
   const [cart, setCart] = useState<CartItem[]>([]);
-  const [searchedProduct, setSearchedProduct] = useState<Product[]>(products);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [currentCategory, setCurrentCategory] = useState<CategoryFilter>("all");
 
   function handleAddToCart(product: Product) {
     setCart(addToCart(cart, product));
@@ -22,6 +31,9 @@ function App() {
   function handleDecrease(productId: number) {
     setCart(decreaseQuantity(cart, productId));
   }
+
+  const searchedProducts = filterProducts(products, searchQuery);
+  const visibleProducts = filterByCategory(searchedProducts, currentCategory);
 
   return (
     <main className="page">
@@ -42,12 +54,19 @@ function App() {
             onDecrease={handleDecrease}
             onGoShopping={() => {}}
           />
-          <SearchProduct setSearchedProduct={setSearchedProduct} />
-          {searchedProduct.length === 0 ? (
+          <SearchProduct
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+          />
+          <FilterCategory
+            currentCategory={currentCategory}
+            onChange={setCurrentCategory}
+          />
+          {visibleProducts.length === 0 ? (
             <div className="not-finded">Ничего не найдено</div>
           ) : (
             <ProductList
-              productList={searchedProduct}
+              productList={visibleProducts}
               onAddToCart={handleAddToCart}
             />
           )}
