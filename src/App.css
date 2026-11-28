@@ -63,3 +63,15 @@
 .search-input {
   margin: 10px 0;
 }
+
+.category-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.category-buttons button.active {
+  background-color: #646cff;
+  color: white;
+}
