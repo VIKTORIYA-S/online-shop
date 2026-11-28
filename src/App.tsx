@@ -2,15 +2,20 @@ import { useState } from "react";
 import "./App.css";
 import ProductList from "./components/ProductList";
 import { products } from "./data/products";
-import type { CartItem, Product } from "./types";
+import type { CartItem, Product, Category } from "./types";
 import { addToCart, removeFromCart, decreaseQuantity } from "./logic/cart";
 import Cart from "./components/Cart";
 import SearchProduct from "./components/SearchProduct";
+import { filterByCategory } from "./logic/filter";
+import CategoryButtons from "./components/CategoryButtons";
 
 function App() {
   const [isShopOpen, setIsShopOpen] = useState(false);
   const [cart, setCart] = useState<CartItem[]>([]);
   const [searchedProduct, setSearchedProduct] = useState<Product[]>(products);
+  const [selectedCategory, setSelectedCategory] = useState<Category | "all">(
+    "all",
+  );
 
   function handleAddToCart(product: Product) {
     setCart(addToCart(cart, product));
@@ -22,6 +27,8 @@ function App() {
   function handleDecrease(productId: number) {
     setCart(decreaseQuantity(cart, productId));
   }
+
+  const visibleProducts = filterByCategory(searchedProduct, selectedCategory);
 
   return (
     <main className="page">
@@ -43,11 +50,15 @@ function App() {
             onGoShopping={() => {}}
           />
           <SearchProduct setSearchedProduct={setSearchedProduct} />
-          {searchedProduct.length === 0 ? (
+          <CategoryButtons
+            selectedCategory={selectedCategory}
+            onSelect={setSelectedCategory}
+          />
+          {visibleProducts.length === 0 ? (
             <div className="not-finded">Ничего не найдено</div>
           ) : (
             <ProductList
-              productList={searchedProduct}
+              productList={visibleProducts}
               onAddToCart={handleAddToCart}
             />
           )}
