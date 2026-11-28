@@ -1,8 +1,8 @@
-import type { Category, Product } from "../types";
+import type { CategoryFilter, Product } from "../types";
 
 export function filterByCategory(
   products: Product[],
-  category: Category = "all",
+  category: CategoryFilter = "all",
 ) {
   if (category === "all") {
     return products;

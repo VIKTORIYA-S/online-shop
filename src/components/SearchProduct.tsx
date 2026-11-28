@@ -1,26 +1,18 @@
-import { useEffect, useState, type Dispatch } from "react";
-import type { Product } from "../types";
-import { products } from "../data/products";
-import { filterProducts } from "../logic/search";
-
 function SearchProduct({
-  setSearchedProduct,
+  searchQuery,
+  setSearchQuery,
 }: {
-  setSearchedProduct: Dispatch<React.SetStateAction<Product[]>>;
+  searchQuery: string;
+  setSearchQuery: (value: string) => void;
 }) {
-  const [query, setQuery] = useState("");
-
-  useEffect(() => {
-    const productList = filterProducts(products, query);
-    setSearchedProduct(productList);
-  }, [query, setQuery, setSearchedProduct]);
-
   return (
     <input
       className="search-input"
-      type="text"
-      value={query}
-      onChange={(e) => setQuery(e.target.value)}
+      type="search"
+      aria-label="Поиск по названию"
+      placeholder="Поиск по названию"
+      value={searchQuery}
+      onChange={(e) => setSearchQuery(e.target.value)}
     />
   );
 }
